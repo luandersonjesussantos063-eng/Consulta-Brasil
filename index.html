@@ -43,7 +43,8 @@
           <div class="hero-trust"><span>✓ Sem cadastro</span><span>✓ Sem custos</span><span>✓ Abrangência nacional</span></div>
         </div>
         <div class="search-card">
-          <div class="card-top"><span class="circle-icon" aria-hidden="true">⌕</span><div><h2>Localizar meu processo</h2><p>Informe o número no padrão CNJ</p></div></div>
+          <div class="card-top"><span class="circle-icon" aria-hidden="true">⌕</span><div><h2>Localizar meu processo</h2><p>Escolha como deseja começar</p></div></div>
+          <div class="search-tabs" role="tablist" aria-label="Forma de consulta"><button type="button" id="tab-cnj" class="search-tab active" role="tab" aria-selected="true" aria-controls="cnj-form">Nº do processo</button><button type="button" id="tab-cpf" class="search-tab" role="tab" aria-selected="false" aria-controls="cpf-form">Por CPF</button></div>
           <form id="cnj-form" novalidate>
             <label for="processo">Número do processo</label>
             <div class="input-shell"><input id="processo" name="processo" inputmode="numeric" autocomplete="off" maxlength="25" placeholder="0000000-00.0000.0.00.0000" aria-describedby="input-help" required/><button type="button" id="clear-processo" class="clear-btn" aria-label="Limpar número">×</button></div>
@@ -51,7 +52,27 @@
             <div id="error" class="error" role="alert" hidden></div>
             <button type="submit" class="primary full">Identificar processo <span aria-hidden="true">→</span></button>
           </form>
-          <div class="search-foot"><span aria-hidden="true">♢</span><span>Não consultamos dados sigilosos nem armazenamos o número pesquisado.</span></div>
+          <form id="cpf-form" novalidate hidden aria-labelledby="tab-cpf">
+            <label for="cpf">CPF da pessoa interessada</label>
+            <div class="input-shell"><input id="cpf" name="cpf" inputmode="numeric" autocomplete="off" maxlength="14" placeholder="000.000.000-00" aria-describedby="cpf-help" required/><button type="button" id="clear-cpf" class="clear-btn" aria-label="Limpar CPF">×</button></div>
+            <p id="cpf-help" class="input-help">Validamos o formato no seu aparelho. O CPF não é enviado nem armazenado pelo Consulta Brasil.</p>
+            <label for="cpf-court">Onde deseja consultar?</label>
+            <select id="cpf-court" class="court-select" required>
+              <option value="mt">Mato Grosso — TJMT</option>
+              <option value="mg">Minas Gerais — TJMG (PJe 1º grau)</option>
+              <option value="rj">Rio de Janeiro — TJRJ (PJe 2º grau)</option>
+              <option value="outros">Outros tribunais do Brasil — Diretório do CNJ</option>
+            </select>
+            <div id="cpf-error" class="error" role="alert" hidden></div>
+            <button type="submit" class="primary full">Escolher consulta oficial <span aria-hidden="true">↗</span></button>
+            <div id="cpf-result" class="cpf-result" hidden aria-live="polite">
+              <strong id="cpf-result-title">CPF validado</strong>
+              <p id="cpf-result-info">Agora abra o tribunal e informe o CPF na página oficial.</p>
+              <div class="result-actions"><button type="button" class="secondary" id="copy-cpf">Copiar CPF</button><a id="cpf-official-link" class="primary" href="https://consultaprocessual.tjmt.jus.br/" target="_blank" rel="noopener noreferrer">Abrir tribunal ↗</a></div>
+            </div>
+            <p class="cpf-disclaimer">Não buscamos processos por CPF diretamente nem mostramos dados de terceiros. Somente o tribunal informa resultados públicos, conforme suas regras.</p>
+          </form>
+          <div class="search-foot"><span aria-hidden="true">♢</span><span>Não consultamos dados sigilosos. Os números digitados são processados apenas no navegador.</span></div>
         </div>
       </div>
     </section>
