@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1425" />
+  <meta name="description" content="Entenda o número de seu processo judicial, identifique a Justiça responsável e encontre o caminho para consultar o andamento nos canais oficiais do Brasil." />
+  <meta name="robots" content="index,follow" />
+  <title>Consulta Brasil — Seu processo, sem complicação</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#principal">Pular para o conteúdo</a>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./" aria-label="Consulta Brasil - início">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4v23M7 10h18M10 10l-5 9h10l-5-9Zm12 0-5 9h10l-5-9ZM11 27h10" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg></span>
+        <span>consulta<span class="brand-accent">brasil</span><small>INFORMAÇÃO JURÍDICA SIMPLIFICADA</small></span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#consulta">Consultar processo</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#guias">Guias jurídicos</a>
+        <a class="nav-cta" href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Portal oficial <span aria-hidden="true">↗</span></a>
+      </nav>
+      <button id="mobile-menu" class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu">☰</button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav wrap" aria-label="Menu mobile" hidden>
+      <a href="#consulta">Consultar processo</a><a href="#como-funciona">Como funciona</a><a href="#guias">Guias jurídicos</a><a href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Portal oficial ↗</a>
+    </nav>
+  </header>
+
+  <main id="principal">
+    <section class="hero" id="consulta">
+      <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="dot"></span> FACILITAMOS O ACESSO À JUSTIÇA</div>
+          <h1>Seu processo.<br /><em>Sem complicação.</em></h1>
+          <p>Entenda o número do seu processo, descubra a Justiça responsável e siga para os canais oficiais de consulta. Tudo em poucos passos.</p>
+          <div class="hero-trust"><span>✓ Sem cadastro</span><span>✓ Sem custos</span><span>✓ Abrangência nacional</span></div>
+        </div>
+        <div class="search-card">
+          <div class="card-top"><span class="circle-icon" aria-hidden="true">⌕</span><div><h2>Localizar meu processo</h2><p>Informe o número no padrão CNJ</p></div></div>
+          <form id="cnj-form" novalidate>
+            <label for="processo">Número do processo</label>
+            <div class="input-shell"><input id="processo" name="processo" inputmode="numeric" autocomplete="off" maxlength="25" placeholder="0000000-00.0000.0.00.0000" aria-describedby="input-help" required/><button type="button" id="clear-processo" class="clear-btn" aria-label="Limpar número">×</button></div>
+            <p id="input-help" class="input-help">Exemplo: 0000832-35.2018.4.01.3202</p>
+            <div id="error" class="error" role="alert" hidden></div>
+            <button type="submit" class="primary full">Identificar processo <span aria-hidden="true">→</span></button>
+          </form>
+          <div class="search-foot"><span aria-hidden="true">♢</span><span>Não consultamos dados sigilosos nem armazenamos o número pesquisado.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="result-area" class="wrap result-area" hidden aria-live="polite">
+      <div class="result-panel"><div class="result-intro"><div><span class="kicker">RESULTADO DA IDENTIFICAÇÃO</span><h2>Entenda o seu número</h2><p id="result-note">Estas são informações extraídas do número, não uma consulta ao andamento.</p></div><span class="result-pill">Número verificado ✓</span></div>
+      <div class="result-grid">
+        <div><span class="result-label">Número formatado</span><strong id="result-number">—</strong></div>
+        <div><span class="result-label">Ramo da Justiça</span><strong id="result-branch">—</strong></div>
+        <div><span class="result-label">Órgão identificado</span><strong id="result-court">—</strong></div>
+        <div><span class="result-label">Ano de distribuição</span><strong id="result-year">—</strong></div>
+      </div>
+      <div class="result-actions"><button class="secondary" id="copy-number">Copiar número</button><a class="primary" href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Consultar no Jus.br <span aria-hidden="true">↗</span></a></div>
+      <p class="result-warning"><strong>Atenção:</strong> a validação verifica apenas o formato e os dígitos do número. Não confirma a existência do processo, sua situação ou suas movimentações. O portal oficial pode exigir autenticação gov.br e a cobertura depende dos sistemas integrados.</p>
+      </div>
+    </section>
+
+    <section class="metrics"><div class="wrap metric-grid"><div><strong>Brasil inteiro</strong><span>Uma porta de entrada para os canais oficiais</span></div><div><strong>100% gratuito</strong><span>Identificação e orientação sobre o número CNJ</span></div><div><strong>Privacidade</strong><span>Pesquisa executada no seu dispositivo</span></div></div></section>
+
+    <section id="como-funciona" class="section wrap"><div class="section-heading center"><span class="kicker">COMO FUNCIONA</span><h2>Entenda e consulte em 3 passos</h2><p>Um caminho mais simples, sem substituir os canais oficiais do Poder Judiciário.</p></div>
+      <div class="steps">
+        <article class="step"><div class="step-no">01</div><div class="step-icon">▤</div><h3>Informe o número</h3><p>Digite o número CNJ com ou sem pontuação. Nós conferimos o formato e os dígitos verificadores.</p></article>
+        <article class="step"><div class="step-no">02</div><div class="step-icon">⚖</div><h3>Identifique o órgão</h3><p>Mostramos o ramo da Justiça e, quando o código permite, o tribunal indicado na numeração.</p></article>
+        <article class="step"><div class="step-no">03</div><div class="step-icon">↗</div><h3>Acesse o canal oficial</h3><p>Copie o número e use o Jus.br para pesquisar o andamento, conforme os serviços disponíveis para seu perfil.</p></article>
+      </div>
+    </section>
+
+    <section class="explain"><div class="wrap explain-inner"><div><span class="kicker">VOCÊ SABIA?</span><h2>O número conta uma história sobre o processo.</h2><p>Cada trecho do padrão CNJ tem um significado. Com ele é possível identificar o ano de origem e a estrutura do órgão responsável — sem acessar documentos de terceiros.</p><a class="text-link" href="guias/entenda-numero-cnj.html">Entenda cada parte do número <span aria-hidden="true">↗</span></a></div><div class="number-diagram"><div class="diagram-number"><span>0000832</span>-<span>35</span>.<span>2018</span>.<span>4</span>.<span>01</span>.<span>3202</span></div><div class="diagram-chips"><span>Sequencial</span><span>Verificador</span><span>Ano</span><span>Justiça</span><span>Tribunal</span><span>Origem</span></div><small>Exemplo ilustrativo de estrutura CNJ, não resultado de consulta processual.</small></div></div></section>
+
+    <section id="guias" class="section wrap"><div class="section-heading split"><div><span class="kicker">CONTEÚDO PARA VOCÊ</span><h2>Aprenda sobre seus direitos</h2></div><p>Conteúdo educativo original, escrito em linguagem acessível para quem quer entender melhor o universo jurídico.</p></div>
+      <div class="articles">
+        <article class="article"><div class="article-picture p1"><span>GUIA PRÁTICO</span><span class="illustration">⚖</span></div><div class="article-body"><span class="article-tag">PROCESSOS</span><h3><a href="guias/como-consultar-processo.html">Como consultar um processo judicial no Brasil</a></h3><p>Onde procurar, o que informar e por que alguns processos não aparecem.</p><a class="text-link" href="guias/como-consultar-processo.html">Ler guia →</a></div></article>
+        <article class="article"><div class="article-picture p2"><span>ENTENDA O PADRÃO</span><span class="illustration">№</span></div><div class="article-body"><span class="article-tag">NÚMERO CNJ</span><h3><a href="guias/entenda-numero-cnj.html">O que significam os números do processo?</a></h3><p>Aprenda a reconhecer ano, Justiça, tribunal e unidade de origem.</p><a class="text-link" href="guias/entenda-numero-cnj.html">Ler guia →</a></div></article>
+        <article class="article"><div class="article-picture p3"><span>VOCABULÁRIO JURÍDICO</span><span class="illustration">§</span></div><div class="article-body"><span class="article-tag">MOVIMENTAÇÕES</span><h3><a href="guias/movimentacoes-processuais.html">O que significa cada movimentação?</a></h3><p>Intimação, conclusão, despacho, sentença e outras expressões explicadas.</p><a class="text-link" href="guias/movimentacoes-processuais.html">Ler guia →</a></div></article>
+      </div>
+    </section>
+
+    <section class="section faq wrap"><div class="section-heading center"><span class="kicker">DÚVIDAS FREQUENTES</span><h2>Respostas claras e diretas</h2></div><div class="faq-list">
+      <details><summary>O Consulta Brasil mostra o andamento atualizado do meu processo?</summary><p>Ainda não. Nesta versão, a ferramenta valida e interpreta o número CNJ e encaminha você para a consulta no portal oficial Jus.br. Não exibimos movimentações reais sem uma fonte de dados autorizada.</p></details>
+      <details><summary>Consigo pesquisar processos de qualquer estado?</summary><p>A ferramenta reconhece números CNJ de ramos da Justiça de todo o país, inclusive os 27 tribunais estaduais. A consulta de andamento ocorre no Jus.br ou no tribunal competente, conforme disponibilidade e requisitos de acesso.</p></details>
+      <details><summary>Por que o site diz que meu número é inválido?</summary><p>Verifique se digitou os 20 dígitos, se não faltou nenhum zero à esquerda e se copiou corretamente o dígito verificador. Alguns processos antigos podem usar formatos diferentes do CNJ.</p></details>
+      <details><summary>Preciso fazer login para consultar o processo?</summary><p>Para identificar o número aqui, não. Para acessar serviços do Jus.br, pode ser necessário entrar com uma conta gov.br de nível exigido pelo serviço. Consulte as instruções do CNJ.</p></details>
+      <details><summary>O Consulta Brasil é um site do governo?</summary><p>Não. Somos uma iniciativa independente de informação jurídica. Não temos vínculo oficial com o CNJ, tribunais ou o portal Jus.br.</p></details>
+    </div></section>
+
+    <section class="end-banner"><div class="wrap end-banner-inner"><div><span class="kicker">COMECE AGORA</span><h2>Você já tem o número do processo?</h2><p>Identifique o órgão responsável e acesse os serviços oficiais sem perder tempo.</p></div><a class="primary light" href="#consulta">Identificar meu processo ↑</a></div></section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-top"><div class="footer-brand"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true">⚖</span><span>consulta<span class="brand-accent">brasil</span></span></a><p>Informação jurídica simplificada para pessoas de todo o Brasil. Serviço independente, sem vínculo com órgãos públicos.</p></div><div><h4>Navegação</h4><a href="#consulta">Identificar processo</a><a href="#guias">Guias jurídicos</a><a href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Jus.br — portal oficial</a></div><div><h4>Informações</h4><a href="sobre.html">Sobre nós</a><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a><a href="https://www.cnj.jus.br/tecnologia-da-informacao-e-comunicacao/justica-4-0/jus-br/perguntas-frequentes/" target="_blank" rel="noopener noreferrer">Ajuda do CNJ ↗</a></div></div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> Consulta Brasil. Conteúdo educativo; não substitui orientação de advogado(a).</span><span>Feito para simplificar.</span></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body></html>
