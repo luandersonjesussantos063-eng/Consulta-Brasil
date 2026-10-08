@@ -1,0 +1,36 @@
+name: Testar DJEN remoto
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Testar resposta pública da API sem CPF
+        shell: bash
+        run: |
+          set -euo pipefail
+          api="https://consulta-brasil.luandersonjesussantos063.workers.dev/api/djen"
+          status=$(curl --silent --show-error --max-time 25 \
+            -o /tmp/djen-response.json \
+            -w '%{http_code}' \
+            -X POST \
+            -H 'Content-Type: application/json' \
+            --data '{"mode":"processo","query":"0000832-35.2018.4.01.3202"}' \
+            "$api")
+          echo "HTTP: $status"
+          python3 - <<'PY'
+          import json
+          with open('/tmp/djen-response.json','r',encoding='utf8') as f: data=json.load(f)
+          print('Campos retornados:',list(data.keys()))
+          print('Fonte:',data.get('source','não informada'))
+          print('Publicações nesta página:',len(data.get('items',[])))
+          if 'error' in data: print('Erro:',str(data['error'])[:300])
+          assert data.get('cpfLookup') is False or 'error' in data
+          PY
+          if [ "$status" != "200" ]; then
+            echo 'O serviço de origem não permitiu concluir a consulta.'
+            exit 1
+          fi
