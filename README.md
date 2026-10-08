@@ -1,4 +1,4 @@
-# Consulta Brasil — versão 1.2.0
+# Consulta Brasil — versão 1.2.1
 
 Site estático de orientação para consulta de processos judiciais brasileiros.
 
@@ -47,6 +47,6 @@ Não guarda números pesquisados nem os transmite a um backend. Sem analytics, a
 - Interface `publicacoes.html` integrada à navegação principal.
 - Serviço de integração `worker/djen-worker.mjs` incluído e testado localmente por simulação (sem consulta real confirmada).
 - A API pública DJEN aceita número CNJ e nome da parte; o código **não aceita CPF**, não localiza todos os processos e não atribui processos a pessoas pelo nome.
-- **Status atual: hospedagem da função ainda não conectada**, por isso a pesquisa da nova tela permanece desabilitada; há link para a consulta oficial.
+- **Status atual: beta conectado** ao Worker Cloudflare. O endpoint `/health` respondeu corretamente, mas uma consulta de teste ao DJEN retornou HTTP 503, e uma chamada direta dos EUA recebeu HTTP 403. A pesquisa pode falhar por restrições regionais. Não há confirmação de resultados reais nem autorização de exploração comercial.
 - O frontend permite conectar futuramente um backend próprio via `assets/config.js`.
 - Consulte as regras em `docs/fontes-oficiais.md` e as instruções em `worker/README.md`. A autorização de uso comercial do DJEN ainda precisa ser verificada; não ligamos anúncios nesta área.
