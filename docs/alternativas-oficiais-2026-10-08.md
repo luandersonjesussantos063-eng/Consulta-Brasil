@@ -8,9 +8,19 @@
 | --- | --- | --- | --- |
 | DJEN / Comunica PJe | Consultas públicas de **comunicações processuais** por processo, parte e OAB (GET /api/v1/comunicacao). | Sem consulta nacional por CPF, não substitui andamento. Requisições de infraestrutura de teste retornaram 403 (fora do Brasil) e 503 (Worker e Supabase sa-east-1). A causa definitiva ainda não foi confirmada; requer contato oficial. | Integração automática permanece pausada. |
 | API Pública DataJud | Número CNJ, tribunal e metadados de movimentações. | Portaria CNJ 160/2020 com alteração 374/2026: fornecimento para fins não comerciais; proíbe exploração comercial dos dados. Sem identificação de partes físicas por CPF. | Não integrar em serviço pago/anúncio baseado nos dados. |
-| Repositório consolidado CNJ, Portaria 316/2024 e Resolução 574/2024 | Prevê acesso por entidades privadas a dados processuais públicos, mediante instrumento próprio. | Requer políticas de privacidade, segurança, auditoria, solicitação à Presidência do CNJ, avaliação técnica e custeio da infraestrutura. A norma menciona nomes das partes, mas **não garante endpoint de pesquisa por CPF**. | Caminho formal para avaliar integração nacional. |
+| Repositório consolidado CNJ, Portarias 316/2024 e 442/2026 e Resolução 574/2024 | Prevê acesso por entidades privadas a dados processuais públicos, mediante instrumento próprio. | Requer políticas de privacidade, segurança, auditoria, solicitação à Presidência do CNJ, avaliação técnica e custeio da infraestrutura. A norma menciona nomes das partes, mas **não garante endpoint de pesquisa por CPF**. | Caminho formal para avaliar integração nacional. |
 | Consulta Nacional de Pessoas | Busca por CPF em várias bases. | Acesso exclusivo a magistrados. | Não elegível para plataforma pública. |
 | Tribunais individuais (PJe e outros) | Alguns possuem interface pública com campo CPF. | Interfaces heterogêneas; não representam autorização para robôs, redistribuição ou coleta em massa. | Permitir navegação manual para canais oficiais, sem automação não autorizada. |
+
+## Alteração normativa recente: Portaria CNJ 442/2026
+
+**Atenção:** a Portaria 442, de 18/09/2026, alterou a Portaria 316/2024 e impôs a entidades privadas requisitos adicionais de habilitação jurídica e regularidade fiscal, social e trabalhista, com documentos tais como CNPJ e certidões pertinentes, além de informações de integridade e administradores. A Portaria 316/2024 já exige, em seu art. 5º, políticas de privacidade, segurança, auditoria, disponibilidade superior a 95% e **capacidade técnica para gestão de identidade e controle de acesso de pelo menos 200 mil usuários únicos por mês**. O acesso se dá por instrumento próprio, e o consumo por empresas envolve custeio de infraestrutura.
+
+Isso torna o acesso empresarial **pouco viável para um projeto pessoal de custo zero neste estágio**, embora a admissibilidade seja avaliada oficialmente pelo CNJ. Não afirmar que qualquer MEI ou desenvolvedor independente está automaticamente habilitado. A fase atual é um *pedido de informações*, não um pedido imediato de credenciamento.
+
+- Texto consolidado da Portaria 316/2024: https://atos.cnj.jus.br/atos/detalhar/5792
+- Nova Portaria 442/2026: https://atos.cnj.jus.br/atos/detalhar/7057
+- Pedido preparado para o SIC: [pedido-informacoes-cnj-2026-10.md](pedido-informacoes-cnj-2026-10.md)
 
 ## Problema técnico identificado e corrigido
 
