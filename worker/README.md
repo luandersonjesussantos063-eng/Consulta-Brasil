@@ -12,6 +12,19 @@ O arquivo [djen-worker.mjs](djen-worker.mjs) é um backend **experimental**, pre
 
 **Não retorna todos os processos do país; retorna apenas comunicações do DJEN.**
 
+## Deploy direto pelo GitHub (caminho recomendado)
+
+Este repositório agora inclui `wrangler.jsonc` na raiz, com `name = consulta-brasil-djen`, entrada `worker/djen-worker.mjs` e origem autorizada do GitHub Pages. Não é preciso copiar o JavaScript à mão.
+
+1. No painel da Cloudflare: **Workers & Pages → Create application → Import a repository → Get started**.
+2. Conecte a conta GitHub e autorize apenas o repositório **Consulta-Brasil**, quando essa opção for apresentada.
+3. Selecione `luandersonjesussantos063-eng/Consulta-Brasil`, branch `main`, diretório raiz `/`, e nome do Worker **consulta-brasil-djen** (igual ao `wrangler.jsonc`).
+4. Não há etapa de compilação; deixe o *Build command* em branco quando permitido. No *Deploy command*, use `npx wrangler deploy`.
+5. Clique em **Save and Deploy**. Quando receber uma URL `https://...workers.dev`, abra `/health` e verifique se responde `{ "ok": true, "source": "DJEN", "cpf": false }`.
+6. O link do Worker poderá ser colocado em `assets/config.js` para habilitar a interface de publicações. **Não compartilhar tokens, senhas ou códigos de autenticação.**
+
+Esse deploy é um experimento técnico, **não autorização para exploração comercial**. Antes de ativar a coleta publicamente, confirmar acesso, reutilização permitida e limites de solicitações.
+
 ## Ativar em uma hospedagem gratuita compatível com Workers
 
 1. Crie sua conta Cloudflare (não requer pagar para começar, dentro da franquia gratuita).
