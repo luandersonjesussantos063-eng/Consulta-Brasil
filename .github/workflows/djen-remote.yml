@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
+      - name: Diagnosticar status da API oficial sem tentar contornar restrições
+        shell: bash
+        run: |
+          status=$(curl --silent --show-error --max-time 15 --max-redirs 0 -o /dev/null -w '%{http_code}' 'https://comunicaapi.pje.jus.br/api/v1/comunicacao?numeroProcesso=00008323520184013202&pagina=1&itensPorPagina=1' || true)
+          echo "HTTP DJEN direto: $status"
       - name: Testar resposta pública da API sem CPF
         shell: bash
         run: |
