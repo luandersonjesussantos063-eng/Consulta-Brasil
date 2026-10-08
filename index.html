@@ -8,8 +8,8 @@
   <meta name="robots" content="index,follow" />
   <title>Consulta Brasil — Seu processo, sem complicação</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="stylesheet" href="assets/style.css?v=1.1.2" />
-  <script src="assets/app.js?v=1.1.2" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=1.2.0" />
+  <script src="assets/app.js?v=1.2.0" defer></script>
 </head>
 <body>
   <a class="skip" href="#principal">Pular para o conteúdo</a>
@@ -22,13 +22,13 @@
       <nav class="nav" aria-label="Navegação principal">
         <a href="#consulta">Consultar processo</a>
         <a href="#como-funciona">Como funciona</a>
-        <a href="#guias">Guias jurídicos</a>
+        <a href="#guias">Guias jurídicos</a><a href="publicacoes.html">Publicações (beta)</a>
         <a class="nav-cta" href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Portal oficial <span aria-hidden="true">↗</span></a>
       </nav>
       <button id="mobile-menu" class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu">☰</button>
     </div>
     <nav id="mobile-nav" class="mobile-nav wrap" aria-label="Menu mobile" hidden>
-      <a href="#consulta">Consultar processo</a><a href="#como-funciona">Como funciona</a><a href="#guias">Guias jurídicos</a><a href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Portal oficial ↗</a>
+      <a href="#consulta">Consultar processo</a><a href="#como-funciona">Como funciona</a><a href="#guias">Guias jurídicos</a><a href="publicacoes.html">Publicações (beta)</a><a href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Portal oficial ↗</a>
     </nav>
   </header>
 
@@ -90,6 +90,7 @@
       </div>
     </section>
 
+    <section class="wrap" style="padding-top:30px;padding-bottom:30px"><div class="result-panel" style="background:#f8fafc"><span class="kicker">EM DESENVOLVIMENTO · V 1.2.0</span><h2 style="margin:7px 0">Publicações judiciais do DJEN</h2><p style="max-width:700px;color:#65758a;font-size:13px">Estamos preparando uma busca própria de comunicações públicas do CNJ por número de processo ou nome da parte. A conexão com o serviço oficial ainda não está ativada. Esta função não pesquisa por CPF.</p><a class="primary" href="publicacoes.html">Conhecer a integração ↗</a></div></section>
     <section class="metrics"><div class="wrap metric-grid"><div><strong>Brasil inteiro</strong><span>Uma porta de entrada para os canais oficiais</span></div><div><strong>100% gratuito</strong><span>Identificação e orientação sobre o número CNJ</span></div><div><strong>Privacidade</strong><span>Pesquisa executada no seu dispositivo</span></div></div></section>
 
     <section id="como-funciona" class="section wrap"><div class="section-heading center"><span class="kicker">COMO FUNCIONA</span><h2>Entenda e consulte em 3 passos</h2><p>Um caminho mais simples, sem substituir os canais oficiais do Poder Judiciário.</p></div>
@@ -121,7 +122,7 @@
     <section class="end-banner"><div class="wrap end-banner-inner"><div><span class="kicker">COMECE AGORA</span><h2>Você já tem o número do processo?</h2><p>Identifique o órgão responsável e acesse os serviços oficiais sem perder tempo.</p></div><a class="primary light" href="#consulta">Identificar meu processo ↑</a></div></section>
   </main>
 
-  <footer class="footer"><div class="wrap footer-top"><div class="footer-brand"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true">⚖</span><span>consulta<span class="brand-accent">brasil</span></span></a><p>Informação jurídica simplificada para pessoas de todo o Brasil. Serviço independente, sem vínculo com órgãos públicos.</p></div><div><h4>Navegação</h4><a href="#consulta">Identificar processo</a><a href="#guias">Guias jurídicos</a><a href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Jus.br — portal oficial</a></div><div><h4>Informações</h4><a href="sobre.html">Sobre nós</a><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a><a href="https://www.cnj.jus.br/tecnologia-da-informacao-e-comunicacao/justica-4-0/jus-br/perguntas-frequentes/" target="_blank" rel="noopener noreferrer">Ajuda do CNJ ↗</a></div></div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> Consulta Brasil. Conteúdo educativo; não substitui orientação de advogado(a).</span><span>Feito para simplificar.</span></div></footer>
+  <footer class="footer"><div class="wrap footer-top"><div class="footer-brand"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true">⚖</span><span>consulta<span class="brand-accent">brasil</span></span></a><p>Informação jurídica simplificada para pessoas de todo o Brasil. Serviço independente, sem vínculo com órgãos públicos.</p></div><div><h4>Navegação</h4><a href="#consulta">Identificar processo</a><a href="#guias">Guias jurídicos</a><a href="publicacoes.html">Publicações (beta)</a><a href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Jus.br — portal oficial</a></div><div><h4>Informações</h4><a href="sobre.html">Sobre nós</a><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a><a href="https://www.cnj.jus.br/tecnologia-da-informacao-e-comunicacao/justica-4-0/jus-br/perguntas-frequentes/" target="_blank" rel="noopener noreferrer">Ajuda do CNJ ↗</a></div></div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> Consulta Brasil. Conteúdo educativo; não substitui orientação de advogado(a).</span><span>Feito para simplificar.</span></div></footer>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <!-- Controle independente de abas: funciona mesmo com JavaScript antigo em cache. -->
   <script>
