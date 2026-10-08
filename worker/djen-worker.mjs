@@ -49,12 +49,13 @@ export function normalize(data) {
   if(!data || !Array.isArray(data.items)) throw Error("Resposta externa inesperada");
   return {
     total: Number.isFinite(Number(data.count))? Math.max(0,Math.min(Number(data.count), 100000000)):data.items.length,
-    items: data.items.slice(0,MAX_RESPONSE_ITEMS).map(x=>({
-      numeroProcesso:clean(x.numeroProcesso,30),
-      siglaTribunal:clean(x.siglaTribunal,20),
-      tipoComunicacao:clean(x.tipoComunicacao,55),
-      dataDisponibilizacao:clean(x.dataDisponibilizacao,35),
-      nomeOrgao:clean(x.nomeOrgao||x.orgao||"",110),
+    items: data.items.slice(0,MAX_RESPONSE_ITEMS).filter(x=>x&&typeof x==="object").map(x=>({
+      // Comunica PJe publica variantes de nomes (camelCase, snake_case e sem separadores).
+      numeroProcesso:clean(x.numeroProcesso||x.numero_processo||x.numeroprocessocommascara||"",30),
+      siglaTribunal:clean(x.siglaTribunal||x.sigla_tribunal||"",20),
+      tipoComunicacao:clean(x.tipoComunicacao||x.tipo_comunicacao||"",55),
+      dataDisponibilizacao:clean(x.dataDisponibilizacao||x.data_disponibilizacao||x.datadisponibilizacao||"",35),
+      nomeOrgao:clean(x.nomeOrgao||x.nome_orgao||x.orgao||"",110),
       link:safeOfficialLink(x.link)
     })),
     source:"DJEN / CNJ",
@@ -88,7 +89,7 @@ export default {
     try {
       const upstream=await fetch(target.toString(),{method:"GET",headers:{"Accept":"application/json"},signal:controller.signal,redirect:"error",cache:"no-store"});
       if(upstream.status===429)return respond({error:"O serviço oficial está limitando as consultas. Tente mais tarde."},503,responseOrigin);
-      if(upstream.status===403)return respond({error:"O serviço oficial restringiu o acesso desta região ou infraestrutura."},503,responseOrigin);
+      if(upstream.status===403)return respond({error:"O DJEN recusou a solicitação (HTTP 403). Pode haver uma regra de acesso ou restrição de origem."},503,responseOrigin);
       if(!upstream.ok)return respond({error:"O serviço oficial está temporariamente indisponível."},503,responseOrigin);
       const data=await upstream.json();
       const safe=normalize(data);
