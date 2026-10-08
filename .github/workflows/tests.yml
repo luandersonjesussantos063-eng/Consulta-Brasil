@@ -1,0 +1,22 @@
+name: Testes Consulta Brasil
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar números CNJ
+        run: node tests/test-cnj.js
+      - name: Validar CPF
+        run: node tests/test-cpf.js
+      - name: Testar integração DJEN sem rede
+        run: node --test worker/djen-worker.test.mjs
