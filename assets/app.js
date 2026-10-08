@@ -17,7 +17,54 @@ el('clear-processo')?.addEventListener('click',()=>{input.value='';input.focus()
 form.addEventListener('submit',event=>{event.preventDefault();const o=verify(input.value);if(!o.ok){error.textContent=o.error;error.hidden=false;input.setAttribute('aria-invalid','true');result.hidden=true;input.focus();return;}error.hidden=true;input.removeAttribute('aria-invalid');const x=describe(o.d);el('result-number').textContent=format(o.d);el('result-branch').textContent=x.branch;el('result-court').textContent=x.court;el('result-year').textContent=x.year;result.hidden=false;result.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});});
 el('copy-number')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(el('result-number').textContent);toast('Número copiado. Cole no portal oficial.');}catch(e){toast('Selecione e copie o número acima.');}});
 }
+
+/* Pesquisa por CPF: apenas validação local; busca real somente no tribunal de destino. */
+const cpfDigits=v=>String(v||'').replace(/\D/g,'').slice(0,11);
+const cpfFormat=v=>{const d=cpfDigits(v);return d.slice(0,3)+(d.length>3?'.'+d.slice(3,6):'')+(d.length>6?'.'+d.slice(6,9):'')+(d.length>9?'-'+d.slice(9,11):'');};
+function validCPF(v){
+ const d=cpfDigits(v);if(d.length!==11||/^(\d)\1{10}$/.test(d))return false;
+ let sum=0;for(let i=0;i<9;i++)sum+=Number(d[i])*(10-i);
+ const a=(sum*10)%11;if((a===10?0:a)!==Number(d[9]))return false;
+ sum=0;for(let i=0;i<10;i++)sum+=Number(d[i])*(11-i);
+ const b=(sum*10)%11;return (b===10?0:b)===Number(d[10]);
+}
+const cpfPortals={
+ mt:{name:'Tribunal de Justiça de Mato Grosso (TJMT)',url:'https://consultaprocessual.tjmt.jus.br/'},
+ mg:{name:'Tribunal de Justiça de Minas Gerais (TJMG) — PJe 1º grau',url:'https://pje-consulta-publica.tjmg.jus.br/'},
+ rj:{name:'Tribunal de Justiça do Rio de Janeiro (TJRJ) — PJe 2º grau',url:'https://tjrj.pje.jus.br/2g/ConsultaPublica/listView.seam'},
+ outros:{name:'Diretório de Tribunais do CNJ',url:'https://www.cnj.jus.br/tribunais-de-justica-estaduais/'}
+};
+const tabCNJ=el('tab-cnj'),tabCPF=el('tab-cpf'),cpfForm=el('cpf-form'),cpfInput=el('cpf'),cpfCourt=el('cpf-court'),cpfError=el('cpf-error'),cpfResult=el('cpf-result');
+function chooseTab(which){
+ if(!tabCNJ||!tabCPF||!cpfForm||!form)return;
+ const useCPF=which==='cpf';tabCNJ.setAttribute('aria-selected',String(!useCPF));tabCPF.setAttribute('aria-selected',String(useCPF));
+ tabCNJ.classList.toggle('active',!useCPF);tabCPF.classList.toggle('active',useCPF);
+ form.hidden=useCPF;cpfForm.hidden=!useCPF;if(result)result.hidden=true;
+}
+tabCNJ?.addEventListener('click',()=>chooseTab('cnj'));
+tabCPF?.addEventListener('click',()=>chooseTab('cpf'));
+if(cpfForm&&cpfInput&&cpfCourt&&cpfError&&cpfResult){
+ cpfInput.addEventListener('input',()=>{cpfInput.value=cpfFormat(cpfInput.value);cpfError.hidden=true;cpfResult.hidden=true;cpfInput.removeAttribute('aria-invalid');});
+ cpfCourt.addEventListener('change',()=>{cpfResult.hidden=true;});
+ el('clear-cpf')?.addEventListener('click',()=>{cpfInput.value='';cpfError.hidden=true;cpfResult.hidden=true;cpfInput.focus();});
+ cpfForm.addEventListener('submit',event=>{
+   event.preventDefault();
+   if(!validCPF(cpfInput.value)){cpfError.textContent='CPF inválido. Confira os dígitos.';cpfError.hidden=false;cpfInput.setAttribute('aria-invalid','true');cpfResult.hidden=true;cpfInput.focus();return;}
+   cpfError.hidden=true;cpfInput.removeAttribute('aria-invalid');
+   const court=cpfCourt.value, portal=cpfPortals[court]||cpfPortals.outros;
+   el('cpf-result-title').textContent='CPF validado no seu dispositivo';
+   el('cpf-result-info').textContent=court==='outros'?'Abra o diretório oficial do CNJ, escolha seu tribunal e confira se existe consulta por CPF. O CPF não será enviado automaticamente.':'Abra a consulta oficial do '+portal.name+' e informe seu CPF lá. O Consulta Brasil ainda não buscou processos; o resultado depende do tribunal.';
+   el('cpf-official-link').href=portal.url;
+   el('cpf-official-link').textContent=court==='outros'?'Abrir diretório do CNJ ↗':'Abrir consulta oficial ↗';
+   cpfResult.hidden=false;
+ });
+ el('copy-cpf')?.addEventListener('click',async()=>{
+   if(!validCPF(cpfInput.value)){cpfResult.hidden=true;return;}
+   try{await navigator.clipboard.writeText(cpfFormat(cpfInput.value));toast('CPF copiado. Cole somente no portal oficial.');}
+   catch(e){toast('Selecione o CPF e copie manualmente.');}
+ });
+}
 const toggle=el('mobile-menu'),nav=el('mobile-nav');if(toggle&&nav){toggle.addEventListener('click',()=>{nav.hidden=!nav.hidden;toggle.setAttribute('aria-expanded',String(!nav.hidden));toggle.textContent=nav.hidden?'☰':'×';});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.textContent='☰';}));}
 if(el('year'))el('year').textContent=String(new Date().getFullYear());
-if(typeof module!=='undefined'&&module.exports)module.exports={onlyDigits,format,hasValidDigits,describe,verify};
+if(typeof module!=='undefined'&&module.exports)module.exports={onlyDigits,format,hasValidDigits,describe,verify,cpfDigits,cpfFormat,validCPF,cpfPortals};
 })();
