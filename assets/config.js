@@ -2,3 +2,7 @@
 // O backend foi verificado no endpoint /health. A fonte DJEN pode restringir acesso por região.
 // Uso comercial das informações não foi liberado. Não adicionar credenciais neste arquivo público.
 window.CONSULTA_BRASIL_DJEN_API_BASE = "https://consulta-brasil.luandersonjesussantos063.workers.dev";
+
+// Consulta automática pausada: a fonte DJEN está recusando requisições da infraestrutura atual.
+// Reativar somente após um teste de integração real em infraestrutura autorizada.
+window.CONSULTA_BRASIL_DJEN_ACTIVE = false;
