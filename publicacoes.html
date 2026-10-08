@@ -5,10 +5,10 @@
 <meta name="description" content="Entenda a consulta de publicações processuais no Diário de Justiça Eletrônico Nacional.">
 <title>Publicações oficiais — Consulta Brasil</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="assets/style.css?v=1.2.2">
-<script src="assets/app.js?v=1.2.2" defer></script>
-<script src="assets/config.js?v=1.2.2" defer></script>
-<script src="assets/djen-ui.js?v=1.2.2" defer></script></head>
+<link rel="stylesheet" href="assets/style.css?v=1.2.3">
+<script src="assets/app.js?v=1.2.3" defer></script>
+<script src="assets/config.js?v=1.2.3" defer></script>
+<script src="assets/djen-ui.js?v=1.2.3" defer></script></head>
 <body><a class="skip" href="#principal">Pular para o conteúdo</a>
 <header class="header"><div class="wrap header-inner">
 <a href="./" class="brand"><span class="brand-mark">⚖</span><span>consulta<span class="brand-accent">brasil</span><small>INFORMAÇÃO JURÍDICA SIMPLIFICADA</small></span></a>
@@ -17,7 +17,7 @@
 </div><nav id="mobile-nav" class="mobile-nav wrap" hidden><a href="./#consulta">Identificar processo</a><a href="./#guias">Guias jurídicos</a><a href="publicacoes.html">Publicações oficiais</a></nav></header>
 <main id="principal">
 <section class="subhero"><div class="wrap">
-<span class="kicker">NOVA FUNCIONALIDADE · V 1.2.2</span>
+<span class="kicker">NOVA FUNCIONALIDADE · V 1.2.3</span>
 <h1>Publicações judiciais do Brasil</h1>
 <p>Preparando a integração com o Diário de Justiça Eletrônico Nacional (DJEN), fonte oficial do CNJ. Pesquise comunicações publicadas — não é uma lista completa de processos ou consulta por CPF.</p>
 </div></section>
@@ -25,7 +25,7 @@
 <div class="publication-layout">
 <div class="search-card publication-search">
 <div class="card-top"><span class="circle-icon" aria-hidden="true">⌕</span><div><h2>Pesquisar publicações</h2><p>Fonte prevista: API pública do DJEN</p></div></div>
-<div id="djen-connection" class="notice-inline" role="status">BETA EXPERIMENTAL: servidor online, mas a consulta à fonte oficial pode falhar por restrições regionais. Sem dados de CPF e sem uso comercial.</div>
+<div id="djen-connection" class="notice-inline" role="status">CONSULTA AUTOMÁTICA INDISPONÍVEL: a fonte DJEN recusou requisições da infraestrutura atual. Para consultar publicações reais agora, use o portal oficial.</div>
 <form id="djen-form" novalidate>
 <label for="djen-mode">Pesquisar por</label>
 <select class="court-select" id="djen-mode"><option value="processo">Número do processo</option><option value="nome">Nome completo da parte</option></select>
@@ -35,8 +35,8 @@
 <div id="djen-error" class="error" role="alert" hidden></div>
 <button type="submit" class="primary full" id="djen-submit" disabled>Buscar publicações ↗</button>
 </form>
-<div class="search-foot"><span>♢</span><span>Ao pesquisar, o número ou nome informado é encaminhado pelo Worker ao serviço oficial DJEN; a consulta pode falhar por limitações de acesso. Não aceitamos CPF. Não reunimos processos por identidade.</span></div>
-<a href="https://comunica.pje.jus.br/consulta" target="_blank" rel="noopener noreferrer" class="text-link">Pesquisar agora no portal oficial do DJEN ↗</a>
+<div class="search-foot"><span>♢</span><span>O formulário automático está pausado e não envia dados. Quando for reativado, buscas por número ou nome serão enviadas ao DJEN mediante aviso. Não aceitamos CPF. Não reunimos processos por identidade.</span></div>
+<a href="https://comunica.pje.jus.br/consulta" target="_blank" rel="noopener noreferrer" class="primary full" style="margin-top:12px">Abrir consulta oficial do DJEN ↗</a>
 </div>
 <div class="publication-explain">
 <h2>O que essa pesquisa vai encontrar?</h2>
