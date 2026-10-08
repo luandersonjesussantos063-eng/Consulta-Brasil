@@ -36,3 +36,25 @@ test('faz busca de publicações num endpoint fixo, sem servidor escolhido pelo 
   assert.equal(calledUrl.searchParams.get('itensPorPagina'),'20');
  } finally{globalThis.fetch=prior;}
 });
+
+test('aceita a nomenclatura real do Comunica PJe sem incluir texto ou documentos pessoais',()=>{
+ const input={count:1,items:[{
+   numero_processo:'00009992220268000001',
+   numeroprocessocommascara:'0000999-22.2026.8.00.0001',
+   datadisponibilizacao:'08/10/2026',
+   siglaTribunal:'TJMT',
+   tipoComunicacao:'Intimação',
+   nomeOrgao:'Vara de Exemplo',
+   texto:'Documento pessoal confidencial de exemplo',
+   cpf:'52998224725',
+   link:'https://example.com/inseguro'
+ }]};
+ const output=normalize(input);
+ assert.equal(output.items.length,1);
+ assert.equal(output.items[0].numeroProcesso,'00009992220268000001');
+ assert.equal(output.items[0].dataDisponibilizacao,'08/10/2026');
+ assert.equal(output.items[0].siglaTribunal,'TJMT');
+ assert.equal(output.items[0].link,null);
+ assert.equal(JSON.stringify(output).includes('Documento pessoal confidencial'),false);
+ assert.equal(JSON.stringify(output).includes('52998224725'),false);
+});
