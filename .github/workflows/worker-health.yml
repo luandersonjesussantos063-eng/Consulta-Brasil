@@ -1,0 +1,29 @@
+name: Verificar Worker Cloudflare
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Conferir endpoint do Worker
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://consulta-brasil.luandersonjesussantos063.workers.dev/health"
+          for tentativa in $(seq 1 10); do
+            echo "Tentativa $tentativa: $url"
+            result=$(curl -sS --max-time 12 -w '\n%{http_code}' "$url" || true)
+            status="${result##*$'\n'}"
+            body="${result%$'\n'*}"
+            if [ "$status" = "200" ] && echo "$body" | grep -q '"ok":true'; then
+              echo "Health OK: $body"
+              exit 0
+            fi
+            echo "Resposta HTTP: $status"
+            if [ "$tentativa" != "10" ]; then sleep 15; fi
+          done
+          echo "O Worker ainda não respondeu /health corretamente."
+          exit 1
