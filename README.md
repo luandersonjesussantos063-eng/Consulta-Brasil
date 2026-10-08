@@ -50,3 +50,7 @@ Não guarda números pesquisados nem os transmite a um backend. Sem analytics, a
 - **Status atual: beta conectado** ao Worker Cloudflare. O endpoint `/health` respondeu corretamente, mas uma consulta de teste ao DJEN retornou HTTP 503, e uma chamada direta dos EUA recebeu HTTP 403. A pesquisa pode falhar por restrições regionais. Não há confirmação de resultados reais nem autorização de exploração comercial.
 - O frontend permite conectar futuramente um backend próprio via `assets/config.js`.
 - Consulte as regras em `docs/fontes-oficiais.md` e as instruções em `worker/README.md`. A autorização de uso comercial do DJEN ainda precisa ser verificada; não ligamos anúncios nesta área.
+
+## Status de consulta DJEN (V 1.2.3)
+
+O Worker responde `/health` com sucesso, mas a API DJEN retornou **HTTP 403** em teste direto de infraestrutura estrangeira; o Worker retornou **503** ao tentar acessar a fonte. A pesquisa pública foi **pausada** em `assets/config.js` até haver integração permitida que funcione. O site apresenta acesso ao portal oficial. Não confundir sucesso do `health` com disponibilidade de resultados.
