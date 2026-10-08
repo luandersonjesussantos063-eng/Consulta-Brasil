@@ -1,4 +1,4 @@
-# Consulta Brasil — versão 1.0
+# Consulta Brasil — versão 1.2.0
 
 Site estático de orientação para consulta de processos judiciais brasileiros.
 
@@ -41,3 +41,12 @@ Não guarda números pesquisados nem os transmite a um backend. Sem analytics, a
 - Para outros estados, o site abre o diretório de tribunais do CNJ (nem todos disponibilizam pesquisa pública por CPF).
 - **Não realiza consulta nacional por CPF**: não há essa busca na API Pública do DataJud. A ferramenta Consulta Nacional de Pessoas do CNJ é restrita a magistrados.
 - Links externos abrem sem enviar o CPF. O usuário deverá inseri-lo no portal oficial, onde regras e resultados variam.
+
+## Publicações judiciais — V 1.2.0
+
+- Interface `publicacoes.html` integrada à navegação principal.
+- Serviço de integração `worker/djen-worker.mjs` incluído e testado localmente por simulação (sem consulta real confirmada).
+- A API pública DJEN aceita número CNJ e nome da parte; o código **não aceita CPF**, não localiza todos os processos e não atribui processos a pessoas pelo nome.
+- **Status atual: hospedagem da função ainda não conectada**, por isso a pesquisa da nova tela permanece desabilitada; há link para a consulta oficial.
+- O frontend permite conectar futuramente um backend próprio via `assets/config.js`.
+- Consulte as regras em `docs/fontes-oficiais.md` e as instruções em `worker/README.md`. A autorização de uso comercial do DJEN ainda precisa ser verificada; não ligamos anúncios nesta área.
