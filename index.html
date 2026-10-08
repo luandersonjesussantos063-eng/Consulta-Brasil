@@ -8,8 +8,8 @@
   <meta name="robots" content="index,follow" />
   <title>Consulta Brasil — Seu processo, sem complicação</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="stylesheet" href="assets/style.css" />
-  <script src="assets/app.js" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=1.1.2" />
+  <script src="assets/app.js?v=1.1.2" defer></script>
 </head>
 <body>
   <a class="skip" href="#principal">Pular para o conteúdo</a>
@@ -123,4 +123,27 @@
 
   <footer class="footer"><div class="wrap footer-top"><div class="footer-brand"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true">⚖</span><span>consulta<span class="brand-accent">brasil</span></span></a><p>Informação jurídica simplificada para pessoas de todo o Brasil. Serviço independente, sem vínculo com órgãos públicos.</p></div><div><h4>Navegação</h4><a href="#consulta">Identificar processo</a><a href="#guias">Guias jurídicos</a><a href="https://www.jus.br/" target="_blank" rel="noopener noreferrer">Jus.br — portal oficial</a></div><div><h4>Informações</h4><a href="sobre.html">Sobre nós</a><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a><a href="https://www.cnj.jus.br/tecnologia-da-informacao-e-comunicacao/justica-4-0/jus-br/perguntas-frequentes/" target="_blank" rel="noopener noreferrer">Ajuda do CNJ ↗</a></div></div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> Consulta Brasil. Conteúdo educativo; não substitui orientação de advogado(a).</span><span>Feito para simplificar.</span></div></footer>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <!-- Controle independente de abas: funciona mesmo com JavaScript antigo em cache. -->
+  <script>
+    (function () {
+      var cnjTab = document.getElementById('tab-cnj');
+      var cpfTab = document.getElementById('tab-cpf');
+      var cnjForm = document.getElementById('cnj-form');
+      var cpfForm = document.getElementById('cpf-form');
+      var resultArea = document.getElementById('result-area');
+      if (!cnjTab || !cpfTab || !cnjForm || !cpfForm) return;
+      function setMode(cpfEnabled) {
+        cnjForm.hidden = cpfEnabled;
+        cpfForm.hidden = !cpfEnabled;
+        cnjTab.classList.toggle('active', !cpfEnabled);
+        cpfTab.classList.toggle('active', cpfEnabled);
+        cnjTab.setAttribute('aria-selected', String(!cpfEnabled));
+        cpfTab.setAttribute('aria-selected', String(cpfEnabled));
+        if (resultArea) resultArea.hidden = true;
+      }
+      cnjTab.addEventListener('click', function () { setMode(false); });
+      cpfTab.addEventListener('click', function () { setMode(true); });
+      setMode(false);
+    })();
+  </script>
 </body></html>
