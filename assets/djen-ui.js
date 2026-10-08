@@ -3,7 +3,9 @@
 const el=id=>document.getElementById(id), form=el("djen-form"), query=el("djen-query"), mode=el("djen-mode"), submit=el("djen-submit");
 if(!form||!query||!mode||!submit)return;
 const api=(window.CONSULTA_BRASIL_DJEN_API_BASE||"").trim().replace(/\/+$/,"");
-const enabled=api.startsWith("https://");
+const enabled=window.CONSULTA_BRASIL_DJEN_ACTIVE===true && api.startsWith("https://");
+if(!enabled){el("djen-connection").textContent="CONSULTA AUTOMÁTICA TEMPORARIAMENTE INDISPONÍVEL: a API do DJEN recusou solicitações feitas da infraestrutura atual. Use o link da consulta oficial abaixo; estamos estudando uma integração autorizada em região brasileira.";}
+
 submit.disabled=!enabled;
 if(enabled)el("djen-connection").textContent="Teste experimental conectado ao Worker. O DJEN pode restringir acessos nesta região e a consulta pode falhar; não pesquisa por CPF.";
 const error=el("djen-error"), results=el("djen-results"), container=el("djen-items");
