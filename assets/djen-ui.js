@@ -5,7 +5,7 @@ if(!form||!query||!mode||!submit)return;
 const api=(window.CONSULTA_BRASIL_DJEN_API_BASE||"").trim().replace(/\/+$/,"");
 const enabled=api.startsWith("https://");
 submit.disabled=!enabled;
-if(enabled)el("djen-connection").textContent="Conexão configurada em modo experimental. A pesquisa mostra apenas publicações do DJEN.";
+if(enabled)el("djen-connection").textContent="Teste experimental conectado ao Worker. O DJEN pode restringir acessos nesta região e a consulta pode falhar; não pesquisa por CPF.";
 const error=el("djen-error"), results=el("djen-results"), container=el("djen-items");
 function report(message){error.textContent=message;error.hidden=false;}
 mode.addEventListener("change",()=>{
