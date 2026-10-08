@@ -1,7 +1,5 @@
 name: Testar DJEN remoto
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 jobs:
   probe:
