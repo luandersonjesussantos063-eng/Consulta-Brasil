@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1425">
+<meta name="description" content="Entenda a consulta de publicações processuais no Diário de Justiça Eletrônico Nacional.">
+<title>Publicações oficiais — Consulta Brasil</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css?v=1.2.0">
+<script src="assets/app.js?v=1.2.0" defer></script>
+<script src="assets/config.js?v=1.2.0" defer></script>
+<script src="assets/djen-ui.js?v=1.2.0" defer></script></head>
+<body><a class="skip" href="#principal">Pular para o conteúdo</a>
+<header class="header"><div class="wrap header-inner">
+<a href="./" class="brand"><span class="brand-mark">⚖</span><span>consulta<span class="brand-accent">brasil</span><small>INFORMAÇÃO JURÍDICA SIMPLIFICADA</small></span></a>
+<nav class="nav" aria-label="Navegação principal"><a href="./#consulta">Identificar processo</a><a href="./#guias">Guias jurídicos</a><a href="publicacoes.html" aria-current="page">Publicações oficiais</a></nav>
+<button id="mobile-menu" class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu">☰</button>
+</div><nav id="mobile-nav" class="mobile-nav wrap" hidden><a href="./#consulta">Identificar processo</a><a href="./#guias">Guias jurídicos</a><a href="publicacoes.html">Publicações oficiais</a></nav></header>
+<main id="principal">
+<section class="subhero"><div class="wrap">
+<span class="kicker">NOVA FUNCIONALIDADE · V 1.2.0</span>
+<h1>Publicações judiciais do Brasil</h1>
+<p>Preparando a integração com o Diário de Justiça Eletrônico Nacional (DJEN), fonte oficial do CNJ. Pesquise comunicações publicadas — não é uma lista completa de processos ou consulta por CPF.</p>
+</div></section>
+<section class="section wrap" style="padding-top:52px">
+<div class="publication-layout">
+<div class="search-card publication-search">
+<div class="card-top"><span class="circle-icon" aria-hidden="true">⌕</span><div><h2>Pesquisar publicações</h2><p>Fonte prevista: API pública do DJEN</p></div></div>
+<div id="djen-connection" class="notice-inline" role="status">Conexão automática ainda não ativada. O módulo já está preparado no código, mas precisa de hospedagem e confirmação das condições de reutilização.</div>
+<form id="djen-form" novalidate>
+<label for="djen-mode">Pesquisar por</label>
+<select class="court-select" id="djen-mode"><option value="processo">Número do processo</option><option value="nome">Nome completo da parte</option></select>
+<label for="djen-query" id="djen-label">Número CNJ</label>
+<div class="input-shell"><input id="djen-query" required inputmode="numeric" autocomplete="off" maxlength="25" placeholder="0000000-00.0000.0.00.0000"></div>
+<p id="djen-help" class="input-help">A pesquisa retorna somente comunicações publicadas. Não digite CPF neste campo.</p>
+<div id="djen-error" class="error" role="alert" hidden></div>
+<button type="submit" class="primary full" id="djen-submit" disabled>Buscar publicações ↗</button>
+</form>
+<div class="search-foot"><span>♢</span><span>Quando ativada, a pesquisa enviará o número ou nome informado ao serviço oficial do DJEN. Não aceitamos CPF. Não reunimos processos por identidade.</span></div>
+<a href="https://comunica.pje.jus.br/consulta" target="_blank" rel="noopener noreferrer" class="text-link">Pesquisar agora no portal oficial do DJEN ↗</a>
+</div>
+<div class="publication-explain">
+<h2>O que essa pesquisa vai encontrar?</h2>
+<p>Comunicados judiciais publicados no diário eletrônico, associados ao número ou ao texto de identificação da parte. Nem todo processo gera uma publicação na janela de pesquisa.</p>
+<div class="publication-note"><strong><span aria-hidden="true">ⓘ</span> Busca por nome não identifica uma pessoa com certeza.</strong><p>Homônimos podem aparecer e processos relevantes podem estar ausentes. Nunca associe uma publicação a um CPF apenas pela coincidência do nome.</p></div>
+<h3>O que já está desenvolvido</h3>
+<ul><li>Adapter para API oficial com retorno resumido e origem identificada.</li><li>Rejeição de buscas por CPF e limite de 20 publicações por requisição.</li><li>Testes automáticos e interface preparada para a conexão.</li></ul>
+<h3>O que ainda falta</h3>
+<p>Hospedar o servidor, testar a conectividade com o órgão de origem e esclarecer a reutilização dos dados antes de monetizar a funcionalidade.</p>
+</div>
+</div>
+<div id="djen-results" class="publication-results" aria-live="polite" hidden><h2>Publicações localizadas</h2><p id="djen-count"></p><div id="djen-items" class="publication-items"></div><p class="input-help">Fonte: DJEN/CNJ. Os resultados não equivalem ao total de processos de uma pessoa.</p></div>
+</section>
+</main>
+<footer class="footer"><div class="wrap footer-bottom"><span>© <span id="year">2026</span> Consulta Brasil. Projeto independente.</span><span><a href="privacidade.html">Privacidade</a> · <a href="termos.html">Termos de uso</a> · <a href="sobre.html">Sobre</a></span></div></footer>
+</body></html>
