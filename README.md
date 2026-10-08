@@ -34,3 +34,10 @@ Quando decidir o domínio final, crie `sitemap.xml` com URLs reais absolutas, de
 ## Privacidade
 
 Não guarda números pesquisados nem os transmite a um backend. Sem analytics, anúncios ou cookies nesta versão. A hospedagem e links de terceiros têm regras próprias.
+## Consulta orientada por CPF (v1.1)
+
+- Aba opcional para validar CPF **apenas no navegador**; não salva nem envia o CPF ao servidor.
+- Encaminha voluntariamente para páginas oficiais com campo de busca CPF: TJMT, TJMG (PJe 1º grau) e TJRJ (PJe 2º grau).
+- Para outros estados, o site abre o diretório de tribunais do CNJ (nem todos disponibilizam pesquisa pública por CPF).
+- **Não realiza consulta nacional por CPF**: não há essa busca na API Pública do DataJud. A ferramenta Consulta Nacional de Pessoas do CNJ é restrita a magistrados.
+- Links externos abrem sem enviar o CPF. O usuário deverá inseri-lo no portal oficial, onde regras e resultados variam.
