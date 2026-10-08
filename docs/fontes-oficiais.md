@@ -9,12 +9,13 @@ Atualização: 08/10/2026. Status: **pesquisa técnica e protótipo; sem coleta 
 | API Pública do DataJud (CNJ) | Não: metadados não expõem CPF de pessoas físicas | Capa, movimentação, órgão, classe | Portaria CNJ nº 374/2026: dados apenas para fins legais, não comerciais, e veda exploração comercial. Não integrar à área monetizada. |
 | API DJEN / Comunica PJe (CNJ) | Não identificado filtro CPF documentado | Comunicações/publicações, busca por número, nome de parte, advogado e OAB | API pública com restrições de acesso e uso abusivo. Antes de uso comercial, confirmar por escrito a política aplicável à reutilização dos resultados. |
 | PJe e portais de tribunais | Alguns oferecem filtro CPF em páginas oficiais | Consultas públicas heterogêneas | Interface web não equivale a API com autorização de coleta em massa. Não automatizar CAPTCHA, login, bloqueios ou contornar termos. |
-| Repositório centralizado do CNJ (Portaria 316/2024) | Acesso específico mediante instrumento próprio | Dados judiciais consolidados | Exige requerimento, segurança e governança; há custeio da infraestrutura para entidades privadas. |
+| Repositório centralizado do CNJ (Portarias 316/2024 e 442/2026) | Acesso específico mediante instrumento próprio | Dados judiciais consolidados | Exige requerimento, requisitos técnicos rigorosos (incluindo controles de acesso para 200 mil usuários únicos/mês e disponibilidade superior a 95%), habilitação jurídica e regularidade fiscal/trabalhista; há custeio da infraestrutura para entidades privadas. |
 
 ### Links das fontes oficiais
 - CNJ, API Pública DataJud: https://www.cnj.jus.br/sistemas/datajud/api-publica/
 - CNJ, Portaria 374/2026: https://atos.cnj.jus.br/atos/detalhar/6972
 - CNJ, Portaria 316/2024: https://atos.cnj.jus.br/atos/detalhar/5792
+- CNJ, Portaria 442/2026 (alteração): https://atos.cnj.jus.br/atos/detalhar/7057
 - CNJ, API DJEN Swagger: https://hcomunicaapi.cnj.jus.br/swagger/index.html
 - CNJ, Comunicações Processuais: https://www.cnj.jus.br/programas-e-acoes/processo-judicial-eletronico-pje/comunicacoes-processuais/
 - CNJ, Resolução 121/2010: https://atos.cnj.jus.br/atos/detalhar/92
@@ -28,3 +29,6 @@ Atualização: 08/10/2026. Status: **pesquisa técnica e protótipo; sem coleta 
 
 ### Limites
 A presença de uma publicação não comprova situação atual do processo; a ausência de publicação não comprova inexistência. Nenhuma integração em produção foi ativada por este commit.
+
+### Pedido de informação oficial
+Antes de qualquer requerimento de API, utilizar a minuta preparada em [pedido-informacoes-cnj-2026-10.md](pedido-informacoes-cnj-2026-10.md) e solicitar orientação ao SIC do CNJ. Nenhum pedido foi enviado ou protocolado.
